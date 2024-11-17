@@ -12,7 +12,7 @@ dotenv.config({
 
 const app = express();
 app.use(cors({
-    origin: '*',  // Allow requests from your frontend domain only
+    origin: 'https://quiz-website-1l6o.vercel.app',  // Allow requests from your frontend domain only
     methods: 'GET,POST,PUT,DELETE', // Allow only these HTTP methods
     allowedHeaders: 'Content-Type,Authorization', // Allow specific headers
   }));
