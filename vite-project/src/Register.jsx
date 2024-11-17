@@ -29,7 +29,7 @@ function RegistrationPage() {
         }
         //const token = sessionStorage.getItem('token'); // Retrieve the token from storage
         try {
-            const response = await fetch('https://quiz-website-murex-two.vercel.app/register', {
+            const response = await fetch('https://quiz-website-nine-orcin.vercel.app/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
