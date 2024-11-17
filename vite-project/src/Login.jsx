@@ -22,7 +22,7 @@ const LoginPage = () => {
         }
 
         try {
-            const response = await fetch('https://quiz-website-murex-two.vercel.app/login', {
+            const response = await fetch('https://quiz-website-nine-orcin.vercel.app/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
