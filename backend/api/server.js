@@ -18,9 +18,9 @@ app.use(express.urlencoded({extended:false}))
 
 
 
-app.get('/',(req,res)=>{
-    res.json("Welcome to Server")
-})
+// app.get('/',(req,res)=>{
+//     res.json("Welcome to Server")
+// })
 
 //Route for Registration and to send otp       
 
