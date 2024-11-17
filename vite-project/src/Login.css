@@ -1,0 +1,73 @@
+#body {
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    /* background: linear-gradient(to right, #ff7e5f, #feb47b); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+
+    background-image: url('./images/bgquiz.jpg');
+    position: relative;
+    overflow: hidden;
+    color: white;
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent image repetition */
+}
+
+.container {
+    /* background: rgb(231, 231, 231); */
+    background: rgb(55, 54, 54);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 300px;
+    text-align: center;
+}
+
+h1 {
+    color: #1ef6f6;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #ff7e5f;
+    outline: none;
+}
+
+button {
+    background: #ff7e5f;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #feb47b;
+}

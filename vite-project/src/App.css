@@ -1,0 +1,139 @@
+
+.quiz-container {
+    background-image: url('./images/bgimage.png'); /* Path to your background image */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    color: white;
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent image repetition */
+}
+
+.quiz-header {
+    position: relative;
+    z-index: 1;
+    font-size: 2.2rem;
+}
+
+.quiz-header h1{
+    color: black;
+}
+
+.quiz-instructions {
+    position: relative;
+    z-index: 1;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(79, 77, 77, 0.6);
+    border-radius: 10px;
+}
+
+.start-button {
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.start-button:hover {
+    background-color: #ff6b81;
+}
+
+.quiz {
+    position: relative;
+    z-index: 1;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+}
+
+.quiz ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+    margin: 20px 0;
+}
+
+.quiz li {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.quiz li:hover {
+    background: rgba(255, 255, 255, 0.2); /* Highlight option on hover */
+}
+
+
+.quiz-instructions ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+.quiz-instructions li {
+    margin: 10px 0; /* Optional: Add some space between list items */
+}
+
+
+.navigation-buttons {
+    margin-top: 20px;
+}
+
+.navigation-buttons button {
+    margin: 0 10px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.navigation-buttons button:hover {
+    background-color: #0056b3;
+}
+
+.navigation-buttons button:disabled {
+    background-color: grey; /* Grey out the previous button if at the first question */
+    cursor: not-allowed; /* Change cursor to indicate it's disabled */
+}
+
+
+.submitted {
+    background-color: rgba(255, 255, 0, 0.2); /* Light yellow background for submitted option */
+    border: 1px solid #FFD700; /* Gold border */
+}
+
+#btncon {
+    display: flex;                 /* Use Flexbox */
+    justify-content: flex-end;    /* Align items to the right */
+    position: relative;           /* Establish a positioning context */
+    padding: 10px;               /* Optional padding */
+}
+
+#btn, #btn2 {
+    margin-left: 10px;           /* Add space between buttons */
+    /* Optional button styles */
+    padding: 10px 20px;          /* Adjust padding */
+    background-color: #5dc607;   /* Button background color */
+    color: black;                 /* Button text color */
+    border: none;                 /* Remove border */
+    border-radius: 5px;          /* Rounded corners */
+    cursor: pointer;              /* Pointer cursor on hover */
+}
+
+#btn:hover, #btn2:hover {
+    background-color: #ec0a0a;   /* Darker background on hover */
+}
