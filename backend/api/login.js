@@ -18,29 +18,38 @@ app.use(express.urlencoded({extended:false}))
 
 //Route for login
 
-app.post('/login',async(req,res)=>{
-    try {
-        const Username = req.body.username
-        const Password = req.body.password
+export default async function handler(req, res) {
+    if (req.method === 'POST') {
+        const { username, password } = req.body;
 
-        const userlogin = await Register.findOne({username:Username})
+        try {
+            // Find the user by username
+            const userlogin = await Register.findOne({ username });
 
-        if (!userlogin) {
-            return res.status(401).json({ message: 'Invalid credentials' });
+            if (!userlogin) {
+                return res.status(401).json({ message: 'Invalid credentials' });
+            }
+
+            // Check if the password matches
+            if (userlogin.password === password && userlogin.username === username) {
+                // Generate a JWT token
+                const token = jwt.sign({ username: userlogin.username, password: userlogin.password }, '321', { expiresIn: '1h' });
+
+                // Send the response with the token and redirect (if needed)
+                return res.status(200).json({
+                    message: 'Login successful',
+                    token,
+                    redirect: '/' // This could be a frontend route where the user is redirected after logging in
+                });
+            } else {
+                return res.status(401).json({ message: 'Invalid credentials' });
+            }
+        } catch (error) {
+            console.error('Login error:', error);
+            return res.status(500).json({ message: 'User cannot be logged in, invalid credentials' });
         }
-
-        if(userlogin.password===Password && userlogin.username===Username){
-            // Generate a JWT token
-            const token = jwt.sign({ username: userlogin.username, password: userlogin.password }, '321', { expiresIn: '1h' });
-            return res.status(200).json({ message: 'Login successful',token, redirect: '/' });
-
-        }
-        else{
-            return res.status(401).json({ message: 'Invalid credentials' });
-        }
-
-    } catch (error) {
-        console.error('Login error:', error);
-        res.status(500).send('User cannot be logged in, invalid credentials');
+    } else {
+        // If the request method is not POST, return a 405 (Method Not Allowed)
+        return res.status(405).json({ message: 'Method Not Allowed' });
     }
-})
+}

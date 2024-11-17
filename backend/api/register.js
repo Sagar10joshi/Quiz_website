@@ -17,28 +17,38 @@ app.use(express.urlencoded({extended:false}))
 
 //Route for Registration and to send otp       
 
-app.post('/register', async (req, res) => {
-    const { username, email, password } = req.body;
-    const otp = Math.floor(100000 + Math.random() * 900000).toString();
-    const otpTimestamp = Date.now();
-    const token = jwt.sign({ username, email, password,otp, otpTimestamp }, '321', { expiresIn: '5m' });
-    
-    if (email) {
+// The handler function for the registration API route
+export default async function handler(req, res) {
+    // Only allow POST requests for registration
+    if (req.method === 'POST') {
+        const { username, email, password } = req.body;
+        
+        if (!email) {
+            return res.status(400).json({ error: 'Email is required' });
+        }
+
+        // Generate OTP and token
+        const otp = Math.floor(100000 + Math.random() * 900000).toString();
+        const otpTimestamp = Date.now();
+        const token = jwt.sign({ username, email, password, otp, otpTimestamp }, '321', { expiresIn: '5m' });
+
         try {
-            await sendOtp(email,otp)
-            res.status(200).json({
+            // Send the OTP email
+            await sendOtp(email, otp);
+
+            // Return the response
+            return res.status(200).json({
                 message: 'Otp Sent Successfully!!',
                 token, // Send the token to the client
-                redirect: '/otp' // Redirect to OTP page
+                redirect: '/otp' // Optionally redirect the client to the OTP verification page
             });
-            console.log("Otp Sent Successfully!!");
-            //console.log("Session data after registration:", req.session.userData);
 
         } catch (error) {
             console.error('Error sending OTP:', error);
-            res.status(500).send('Error sending OTP');
+            return res.status(500).json({ error: 'Error sending OTP' });
         }
     } else {
-        res.status(400).send('Email is required');
+        // Handle other HTTP methods (e.g., GET, PUT)
+        return res.status(405).json({ error: 'Method Not Allowed' });
     }
-});
+}
