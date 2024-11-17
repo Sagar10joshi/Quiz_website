@@ -114,7 +114,7 @@ function Quiz({ questions }) {
 
       const token = sessionStorage.getItem('token'); // Fetch the token
       // POST the score to your backend
-      const response = await fetch('https://quiz-website-murex-two.vercel.app/score', {
+      const response = await fetch('https://quiz-website-nine-orcin.vercel.app/score', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
