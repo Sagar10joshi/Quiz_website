@@ -20,7 +20,7 @@ const OTPVerification = () => {
         const token = sessionStorage.getItem('token');
     
         try {
-            const response = await fetch('http://localhost:5000/otp', {
+            const response = await fetch('https://quiz-website-murex-two.vercel.app/otp', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
